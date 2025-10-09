@@ -1,20 +1,18 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
-
+from src.calculator_runner import run_calculator
 
 def main() -> None:
-    """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-    :return: Данная функция ничего не возвращает
-    """
+    while True:
+        expression = input("enter expression or press enter to quit: ")
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
+        if expression.replace(" ", "") == "":
+            print("goodbye:)")
+            break
 
-    result = power_function(target=target, power=degree)
+        result = run_calculator(expression)
+        if result % 1 == 0:
+            result = int(result)
 
-    print(result)
-
-    print(SAMPLE_CONSTANT)
+        print("result: ",result)
 
 if __name__ == "__main__":
     main()
