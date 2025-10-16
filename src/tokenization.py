@@ -1,16 +1,27 @@
 from src.common import is_number, OPERATORS
 from string import digits
 
+
 def tokenize(expression: str) -> list[str]:
+    """
+    Токенизация и проверка корректности математического выражения
+    в инфиксной записи
+    :param expression: Математическое выражение
+    :return: Математическое выражение, разбитое на токены
+    """
 
     tokens: list[str] = []
 
-    opened_brackets  = 0
+    opened_brackets = 0
 
     current_number = ""
 
     # добавление current number в токены
     def apply_number():
+        """
+        Завершает формирование числа, добавляет в токены
+        :return: Ничего не возвращает
+        """
         nonlocal current_number
 
         if current_number == "":
@@ -59,7 +70,7 @@ def tokenize(expression: str) -> list[str]:
             # для закрывающей скобки
             elif i == ")":
                 if (opened_brackets == 0 or
-                        (tokens[-1] != ")"and not is_number(tokens[-1]))):
+                        (tokens[-1] != ")" and not is_number(tokens[-1]))):
                     raise ValueError("closing bracket error")
                 tokens.append(i)
                 opened_brackets -= 1
