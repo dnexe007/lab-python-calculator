@@ -17,7 +17,7 @@ def tokenize(expression: str) -> list[str]:
     current_number = ""
 
     # добавление current number в токены
-    def apply_number():
+    def apply_number() -> None:
         """
         Завершает формирование числа, добавляет в токены
         :return: Ничего не возвращает
