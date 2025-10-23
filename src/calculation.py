@@ -83,5 +83,5 @@ def calculate(rpn_tokens: list[str]) -> float:
                 stack.append(operation_result)
 
     result = stack[-1]
-    #result = round(result, 5)
+    result = round(result, 5)
     return result
